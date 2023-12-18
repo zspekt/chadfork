@@ -269,6 +269,9 @@ M.telescope = {
   plugin = true,
 
   n = {
+    -- persisted.nvim
+    ["<leader>fs"] = { "<cmd> Telescope persisted <CR>", "Find sessions" },
+
     -- find
     ["<leader>ff"] = { "<cmd> Telescope find_files <CR>", "Find files" },
     ["<leader>fa"] = { "<cmd> Telescope find_files follow=true no_ignore=true hidden=true <CR>", "Find all" },
