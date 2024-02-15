@@ -1,6 +1,13 @@
 local M = {}
 local utils = require "core.utils"
 
+local hl_list = {}
+for i, color in pairs { "#662121", "#767621", "#216631", "#325a5e", "#324b7b", "#562155" } do
+  local name = "IndentBlanklineIndent" .. i
+  vim.api.nvim_set_hl(0, name, { fg = color })
+  table.insert(hl_list, name)
+end
+
 M.blankline = {
   indentLine_enabled = 1,
   filetype_exclude = {
@@ -20,6 +27,15 @@ M.blankline = {
   show_first_indent_level = false,
   show_current_context = true,
   show_current_context_start = true,
+  char_highlight_list = hl_list,
+  rainbow = {
+    enable = true,
+    -- disable = { "jsx", "cpp" }, list of languages you want to disable the plugin for
+    extended_mode = true, -- Also highlight non-bracket delimiters like html tags, boolean or table: lang -> boolean
+    max_file_lines = nil, -- Do not enable for files with more than n lines, int
+    -- colors = {}, -- table of hex strings
+    -- termcolors = {} -- table of colour name strings
+  },
 }
 
 M.luasnip = function(opts)
@@ -40,8 +56,8 @@ M.luasnip = function(opts)
   vim.api.nvim_create_autocmd("InsertLeave", {
     callback = function()
       if
-        require("luasnip").session.current_nodes[vim.api.nvim_get_current_buf()]
-        and not require("luasnip").session.jump_active
+          require("luasnip").session.current_nodes[vim.api.nvim_get_current_buf()]
+          and not require("luasnip").session.jump_active
       then
         require("luasnip").unlink_current()
       end
