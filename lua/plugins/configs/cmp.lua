@@ -73,9 +73,7 @@ local options = {
     ["<C-n>"] = cmp.mapping.select_next_item(),
     ["<C-d>"] = cmp.mapping.scroll_docs(-4),
     ["<C-f>"] = cmp.mapping.scroll_docs(4),
-    -- changed mapping from C-Space to C-] due to a delay
-    -- likely caused by C-Space being my tmux prefix
-    ["<C-]>"] = cmp.mapping.complete(),
+    ["<C-y>"] = cmp.mapping.complete(),
     ["<C-e>"] = cmp.mapping.close(),
     ["<CR>"] = cmp.mapping.confirm {
       behavior = cmp.ConfirmBehavior.Insert,
