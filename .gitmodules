@@ -1,3 +1,3 @@
 [submodule "lua/custom"]
 	path = lua/custom
-	url = https://github.com/zspekt/custom.git
+	url = git@github.com:zspekt/custom.git
